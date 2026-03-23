@@ -13,43 +13,37 @@ class SplashController extends GetxController {
   @override
   void onInit() {
     super.onInit();
-    _startTimer();
+    _navigateToHome();
   }
 
-  void _startTimer() {
-    Timer.periodic(const Duration(seconds: 1), (timer) async {
-      if (progressIndex.value < 2) {
-        progressIndex.value++;
-      } else {
-        timer.cancel();
-      //  await _checkLoginStatus();
-      }
-    });
+  void _navigateToHome() async {
+    await Future.delayed(const Duration(seconds: 3));
+    Get.offNamed('/home');
+
+    // Future<void> _checkLoginStatus() async {
+    //   final tokenRow = await pref.getAccessRowToken();
+    //   final token = await pref.getAccessToken();
+    //   final userId = await pref.getUserId();
+
+    //   final loginStatus = await pref.checkLogin();
+
+    //   if (loginStatus == true && token != null) {
+
+    //     if (!fcmController.openedFromNotification.value) {
+    //       Get.offAllNamed(AppRoute.navBarScreen);
+    //     }
+
+    //     Future.delayed(const Duration(milliseconds: 300), () {
+    //       notificationController.connectSocket(tokenRow ?? "");
+    //       messageController.connectSocket(
+    //         token: tokenRow ?? "",
+    //         userId: userId ?? "",
+    //       );
+    //     });
+
+    //   } else {
+    //     Get.offAllNamed(AppRoute.onboardingScreen);
+    //   }
+    // }
   }
-
-  // Future<void> _checkLoginStatus() async {
-  //   final tokenRow = await pref.getAccessRowToken();
-  //   final token = await pref.getAccessToken();
-  //   final userId = await pref.getUserId();
-
-  //   final loginStatus = await pref.checkLogin();
-
-  //   if (loginStatus == true && token != null) {
-
-  //     if (!fcmController.openedFromNotification.value) {
-  //       Get.offAllNamed(AppRoute.navBarScreen);
-  //     }
-
-  //     Future.delayed(const Duration(milliseconds: 300), () {
-  //       notificationController.connectSocket(tokenRow ?? "");
-  //       messageController.connectSocket(
-  //         token: tokenRow ?? "",
-  //         userId: userId ?? "",
-  //       );
-  //     });
-
-  //   } else {
-  //     Get.offAllNamed(AppRoute.onboardingScreen);
-  //   }
-  // }
 }
