@@ -3,15 +3,16 @@ import 'package:deanash_28/core/common/constants/icons_path.dart';
 import 'package:deanash_28/core/common/style/global_text_style.dart';
 import 'package:deanash_28/core/common/widgets/gradient_background.dart';
 import 'package:deanash_28/core/common/widgets/custom_text_field.dart';
-import 'package:deanash_28/feature/auth/sign_in/controller/signin_controller.dart';
-import 'package:deanash_28/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/common/widgets/custom_button.dart';
-class SignInScreen extends StatelessWidget {
-  final SignInController controller = Get.put(SignInController());
-  SignInScreen({super.key});
+import '../../../../routes/app_routes.dart';
+import '../controller/registration_controller.dart';
+
+class RegistrationScreen extends StatelessWidget {
+  final RegistrationController controller = Get.put(RegistrationController());
+  RegistrationScreen({super.key});
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -34,7 +35,7 @@ class SignInScreen extends StatelessWidget {
                       ),
                       SizedBox(height: 76.h),
                       Text(
-                        "Get Signed in.",
+                        "Register New Account",
                         style: getTextStyle(
                           fontsize: 25.sp,
                           fontweight: FontWeight.w700,
@@ -44,6 +45,21 @@ class SignInScreen extends StatelessWidget {
                     ],
                   ),
                 ),
+                Text(
+                  "Name:",
+                  style: getTextStyle(
+                    fontsize: 16.sp,
+                    fontweight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(height: 8.h),
+                CustomTextField(
+                  hintText: "Enter your name",
+                  prefixIcon: Icons.person_outline,
+                  controller: controller.nameController,
+                  keyboardType: TextInputType.text,
+                ),
+                SizedBox(height: 14.h),
                 Text(
                   "Email:",
                   style: getTextStyle(
@@ -72,12 +88,35 @@ class SignInScreen extends StatelessWidget {
                     hintText: "* * * * * * *",
                     prefixIcon: Icons.lock_outlined,
                     isPassword: true,
-                    isPasswordVisible: controller.isPasswordVisible,
+                    isPasswordVisible: controller.isPasswordVisible.value,
                     onPasswordVisibilityToggle:
                         controller.togglePasswordVisibility,
                     controller: controller.passwordController,
                   ),
                 ),
+                SizedBox(height: 14.h),
+
+                Text(
+                  "Confirm Password:",
+                  style: getTextStyle(
+                    fontsize: 16.sp,
+                    fontweight: FontWeight.w700,
+                  ),
+                ),
+                SizedBox(height: 8.h),
+                Obx(
+                  () => CustomTextField(
+                    hintText: "* * * * * * *",
+                    prefixIcon: Icons.lock_outlined,
+                    isPassword: true,
+                    isPasswordVisible:
+                        controller.isConfirmPasswordVisible.value,
+                    onPasswordVisibilityToggle:
+                        controller.toggleConfirmPasswordVisibility,
+                    controller: controller.confirmPasswordController,
+                  ),
+                ),
+
                 SizedBox(height: 14.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -86,7 +125,7 @@ class SignInScreen extends StatelessWidget {
                       () => Row(
                         children: [
                           Checkbox(
-                            value: controller.rememberMe,
+                            value: controller.rememberMe.value,
                             onChanged: (value) {
                               controller.toggleRememberMe(value ?? false);
                             },
@@ -126,13 +165,13 @@ class SignInScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 30.h),
-                CustomButton(title: "Sign In", ontap: () {}),
-                SizedBox(height: 56.h,),
+                CustomButton(title: "Register", ontap: () {}),
+                SizedBox(height: 56.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Text(
-                      "New at Monev8? ",
+                      "Already a Movin8 member? ",
                       style: getTextStyle(
                         fontsize: 14.sp,
                         fontweight: FontWeight.w400,
@@ -140,11 +179,10 @@ class SignInScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                      
-                        Get.toNamed(AppRoute.registrationScreen);
+                        Get.toNamed(AppRoute.signInScreen);
                       },
                       child: Text(
-                        "Register",
+                        "Sign in",
                         style: getTextStyle(
                           fontsize: 14.sp,
                           fontweight: FontWeight.w500,
@@ -154,7 +192,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 50.h,),
+                SizedBox(height: 50.h),
               ],
             ),
           ),
