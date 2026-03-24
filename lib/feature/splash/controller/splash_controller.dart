@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:deanash_28/routes/app_routes.dart';
 import 'package:get/get.dart';
 
 class SplashController extends GetxController {
@@ -18,7 +19,7 @@ class SplashController extends GetxController {
 
   void _navigateToHome() async {
     await Future.delayed(const Duration(seconds: 3));
-    Get.offNamed('/home');
+    Get.offNamed(AppRoute.getSignInScreen());
 
     // Future<void> _checkLoginStatus() async {
     //   final tokenRow = await pref.getAccessRowToken();

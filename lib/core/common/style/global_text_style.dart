@@ -18,7 +18,7 @@ TextStyle getTextStyle(
 }
 
 double sp(double baseSize) {
-  double scale = ScreenUtil().screenWidth / 375;
+  double scale = ScreenUtil().screenWidth / 393;
   if (scale > 1.2) scale = 1.2;
   return baseSize * scale;
 }
