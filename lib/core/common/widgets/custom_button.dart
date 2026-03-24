@@ -7,7 +7,9 @@ import '../style/global_text_style.dart';
 class CustomButton extends StatelessWidget {
   final VoidCallback? ontap;
   final String title;
-  const CustomButton({required this.title, required this.ontap, super.key});
+  final Color? buttonColor;
+  final Color? textColor;
+  const CustomButton({required this.title, required this.ontap, super.key, this.buttonColor, this.textColor});
 
   @override
   Widget build(BuildContext context) {
@@ -17,10 +19,10 @@ class CustomButton extends StatelessWidget {
         width: double.infinity,
         padding: EdgeInsets.symmetric(
           //  horizontal: 24.w,
-          vertical: 12.h,
+          vertical: 10.h,
         ),
         decoration: BoxDecoration(
-          color: AppColors.buttonColor,
+          color: buttonColor ?? AppColors.buttonColor,
           borderRadius: BorderRadius.circular(100.r),
         ),
         child: Center(
@@ -29,7 +31,7 @@ class CustomButton extends StatelessWidget {
             style: getTextStyle(
               fontsize: 16.sp,
               fontweight: FontWeight.w700,
-              color: AppColors.primaryTextColor,
+              color: textColor ?? AppColors.primaryTextColor,
             ),
           ),
         ),
