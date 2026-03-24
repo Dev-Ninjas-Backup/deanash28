@@ -1,19 +1,19 @@
+import 'package:deanash_28/core/common/constants/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 TextStyle getTextStyle(
- // primaryTextColor,
    {
   double fontsize = 14.0,
   FontWeight fontweight = FontWeight.w400,
   TextAlign textAlign = TextAlign.center,
-  // Color color = AppColors.primaryTextColor,
+   Color color = AppColors.primaryTextColor,
 }) {
   return GoogleFonts.inter(
     fontSize: sp(fontsize),
     fontWeight: fontweight,
-    //; color: color,
+     color: color,
   );
 }
 

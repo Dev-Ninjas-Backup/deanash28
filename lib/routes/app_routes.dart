@@ -1,6 +1,5 @@
 import 'package:deanash_28/feature/auth/sign_in/screen/signin_screen.dart';
 import 'package:deanash_28/feature/splash/screen/splash_screen.dart';
-import 'package:get/get_navigation/src/routes/get_route.dart';
 import 'package:get/route_manager.dart';
 
 class AppRoute {
