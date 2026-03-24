@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/common/widgets/custom_button.dart';
+import '../../../../routes/app_routes.dart';
 import '../controller/forgot_password_controller.dart';
 
 class ForgotPasswordScreen extends StatelessWidget {
@@ -77,7 +78,7 @@ class ForgotPasswordScreen extends StatelessWidget {
                 ),
 
                 SizedBox(height: 30.h),
-                CustomButton(title: "Send", ontap: () {}),
+                CustomButton(title: "Send", ontap: () {Get.toNamed(AppRoute.getOtpForgotScreen());}),
                 SizedBox(height: 14.h),
                 CustomButton(
                   title: "Cancel",
