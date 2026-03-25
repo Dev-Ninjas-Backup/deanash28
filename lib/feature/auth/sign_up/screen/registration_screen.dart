@@ -11,8 +11,12 @@ import '../../../../routes/app_routes.dart';
 import '../controller/registration_controller.dart';
 
 class RegistrationScreen extends StatelessWidget {
-  final RegistrationController controller = Get.put(RegistrationController());
   RegistrationScreen({super.key});
+
+  late final RegistrationController controller =
+      Get.isRegistered<RegistrationController>()
+          ? Get.find<RegistrationController>()
+          : Get.put(RegistrationController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -167,7 +171,7 @@ class RegistrationScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 30.h),
-                CustomButton(title: "Register", ontap: () {}),
+                CustomButton(title: "Register", ontap: () {Get.toNamed(AppRoute.otpRegistrationScreen);}),
                 SizedBox(height: 56.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,

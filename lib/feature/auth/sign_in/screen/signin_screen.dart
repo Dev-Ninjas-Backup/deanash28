@@ -10,8 +10,11 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 class SignInScreen extends StatelessWidget {
-  final SignInController controller = Get.put(SignInController());
   SignInScreen({super.key});
+
+  late final SignInController controller = Get.isRegistered<SignInController>()
+      ? Get.find<SignInController>()
+      : Get.put(SignInController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
