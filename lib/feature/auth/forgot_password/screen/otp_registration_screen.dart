@@ -2,21 +2,21 @@ import 'package:deanash_28/core/common/constants/app_colors.dart';
 import 'package:deanash_28/core/common/constants/icons_path.dart';
 import 'package:deanash_28/core/common/style/global_text_style.dart';
 import 'package:deanash_28/core/common/widgets/gradient_background.dart';
+import 'package:deanash_28/feature/auth/sign_up/controller/registration_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import 'package:pinput/pinput.dart';
 import '../../../../core/common/widgets/custom_button.dart';
 import '../../../../routes/app_routes.dart';
-import '../controller/forgot_password_controller.dart';
 
-class OtpForgotScreen extends StatelessWidget {
-  OtpForgotScreen({super.key});
+class OtpRegistrationScreen extends StatelessWidget {
+  OtpRegistrationScreen({super.key});
 
-  late final ForgotPasswordController controller =
-      Get.isRegistered<ForgotPasswordController>()
-          ? Get.find<ForgotPasswordController>()
-          : Get.put(ForgotPasswordController());
+  late final RegistrationController controller =
+      Get.isRegistered<RegistrationController>()
+          ? Get.find<RegistrationController>()
+          : Get.put(RegistrationController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -129,7 +129,7 @@ class OtpForgotScreen extends StatelessWidget {
                 CustomButton(
                   title: "Verify",
                   ontap: () {
-                    Get.toNamed(AppRoute.getUpdatePasswordScreen());
+                    Get.toNamed(AppRoute.getSignInScreen());
                   },
                 ),
                 SizedBox(height: 14.h),
