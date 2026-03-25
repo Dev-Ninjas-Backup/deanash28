@@ -8,6 +8,7 @@ import '../feature/auth/forgot_password/screen/otp_registration_screen.dart';
 import '../feature/auth/forgot_password/screen/update_password_screen.dart';
 import '../feature/auth/sign_up/screen/registration_screen.dart';
 import '../feature/onboarding/screen/onboarding_screen1.dart';
+import '../feature/onboarding/screen/onboarding_screen2.dart';
 
 class AppRoute {
   //splash
@@ -22,6 +23,7 @@ class AppRoute {
 
   //onboarding
   static String onboardingScreen1 = '/onboardingScreen1';
+  static String onboardingScreen2 = '/onboardingScreen2';
 
   //auth
   static String getSplashScreen() => splashScreen;
@@ -34,7 +36,7 @@ class AppRoute {
 
   //onboarding
   static String getOnboardingScreen1() => onboardingScreen1;
-
+  static String getOnboardingScreen2() => onboardingScreen2;
   static List<GetPage> routes = [
     GetPage(name: splashScreen, page: () => SplashScreen()),
 
@@ -83,5 +85,12 @@ class AppRoute {
       transition: Transition.fadeIn,
       transitionDuration: const Duration(milliseconds: 500),
     ),
+    GetPage(
+      name: onboardingScreen2,
+      page: () => OnboardingScreen2(),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
+    ),
+
   ];
 }

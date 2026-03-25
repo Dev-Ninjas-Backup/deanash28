@@ -6,4 +6,8 @@ class Iconpath {
    static String dotIcon = 'assets/icons/dot.png';
    static String earnXpIcon = 'assets/icons/earn_xp.png';
    static String trackIcon = 'assets/icons/track.png';
+   static String debtIcon = 'assets/icons/debt.png';
+    static String wealthIcon = 'assets/icons/wealth.png';
+    static String startIcon = 'assets/icons/starting.png';
+    static String spenderIcon = 'assets/icons/spender.png';
 }

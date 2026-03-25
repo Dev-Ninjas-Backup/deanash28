@@ -2,19 +2,19 @@ import 'package:deanash_28/core/common/constants/app_colors.dart';
 import 'package:deanash_28/core/common/constants/icons_path.dart';
 import 'package:deanash_28/core/common/style/global_text_style.dart';
 import 'package:deanash_28/core/common/widgets/gradient_background.dart';
-import 'package:deanash_28/feature/onboarding/controller/onboarding_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/common/widgets/custom_button.dart';
+import '../../../routes/app_routes.dart';
 
 class OnboardingScreen1 extends StatelessWidget {
-  OnboardingScreen1({super.key});
+  const OnboardingScreen1({super.key});
 
-  late final OnboardingController controller =
-      Get.isRegistered<OnboardingController>()
-      ? Get.find<OnboardingController>()
-      : Get.put(OnboardingController());
+  // late final OnboardingController controller =
+  //     Get.isRegistered<OnboardingController>()
+  //     ? Get.find<OnboardingController>()
+  //     : Get.put(OnboardingController());
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -135,8 +135,12 @@ class OnboardingScreen1 extends StatelessWidget {
                   ),
                 ),
 
-                SizedBox(height: 30.h),
-                CustomButton(title: "Get Started", ontap: () {}),
+                CustomButton(
+                  title: "Get Started",
+                  ontap: () {
+                    Get.toNamed(AppRoute.getOnboardingScreen2());
+                  },
+                ),
                 SizedBox(height: 30.h),
                 Text(
                   "Join thousands improving their money habits daily",
@@ -144,7 +148,7 @@ class OnboardingScreen1 extends StatelessWidget {
                   maxLines: 2,
                   overflow: TextOverflow.ellipsis,
                   style: getTextStyle(
-                    fontsize: 14.sp,
+                    fontsize: sp(14),
                     fontweight: FontWeight.w400,
                   ),
                 ),
