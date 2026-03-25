@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../../core/common/widgets/custom_button.dart';
+
 class SignInScreen extends StatelessWidget {
   SignInScreen({super.key});
 
@@ -117,7 +118,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                      Get.toNamed(AppRoute.forgotPasswordScreen);
+                        Get.toNamed(AppRoute.forgotPasswordScreen);
                       },
                       child: Text(
                         "Forgot Password?",
@@ -131,8 +132,13 @@ class SignInScreen extends StatelessWidget {
                   ],
                 ),
                 SizedBox(height: 30.h),
-                CustomButton(title: "Sign In", ontap: () {}),
-                SizedBox(height: 56.h,),
+                CustomButton(
+                  title: "Sign In",
+                  ontap: () {
+                    Get.offAllNamed(AppRoute.onboardingScreen1);
+                  },
+                ),
+                SizedBox(height: 56.h),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
@@ -145,7 +151,6 @@ class SignInScreen extends StatelessWidget {
                     ),
                     GestureDetector(
                       onTap: () {
-                      
                         Get.toNamed(AppRoute.registrationScreen);
                       },
                       child: Text(
@@ -159,7 +164,7 @@ class SignInScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-                SizedBox(height: 50.h,),
+                SizedBox(height: 50.h),
               ],
             ),
           ),

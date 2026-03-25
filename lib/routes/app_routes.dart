@@ -7,6 +7,7 @@ import '../feature/auth/forgot_password/screen/otp_forgot_screen.dart';
 import '../feature/auth/forgot_password/screen/otp_registration_screen.dart';
 import '../feature/auth/forgot_password/screen/update_password_screen.dart';
 import '../feature/auth/sign_up/screen/registration_screen.dart';
+import '../feature/onboarding/screen/onboarding_screen1.dart';
 
 class AppRoute {
   //splash
@@ -15,21 +16,29 @@ class AppRoute {
   static String signInScreen = '/signInScreen';
   static String registrationScreen = '/registrationScreen';
   static String forgotPasswordScreen = '/forgotPasswordScreen';
-  static String onboardingScreen = '/onboardingScreen';
   static String otpForgotScreen = '/otpForgotScreen';
   static String otpRegistrationScreen = '/otpRegistrationScreen';
   static String updatePasswordScreen = '/updatePasswordScreen';
 
+  //onboarding
+  static String onboardingScreen1 = '/onboardingScreen1';
+
+  //auth
   static String getSplashScreen() => splashScreen;
   static String getSignInScreen() => signInScreen;
   static String getRegistrationScreen() => registrationScreen;
   static String getForgotPasswordScreen() => forgotPasswordScreen;
   static String getOtpForgotScreen() => otpForgotScreen;
   static String getOtpRegistrationScreen() => otpRegistrationScreen;
-  static String getOnboardingScreen() => onboardingScreen;
   static String getUpdatePasswordScreen() => updatePasswordScreen;
+
+  //onboarding
+  static String getOnboardingScreen1() => onboardingScreen1;
+
   static List<GetPage> routes = [
     GetPage(name: splashScreen, page: () => SplashScreen()),
+
+    //auth
     GetPage(
       name: signInScreen,
       page: () => SignInScreen(),
@@ -66,6 +75,13 @@ class AppRoute {
       transition: Transition.fade,
       transitionDuration: const Duration(milliseconds: 500),
     ),
-    // GetPage(name: onboardingScreen, page: () => OnboardingScreen()),
+
+    //onboarding
+    GetPage(
+      name: onboardingScreen1,
+      page: () => OnboardingScreen1(),
+      transition: Transition.fadeIn,
+      transitionDuration: const Duration(milliseconds: 500),
+    ),
   ];
 }
