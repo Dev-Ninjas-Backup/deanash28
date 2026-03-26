@@ -137,6 +137,21 @@ class OnboardingController extends GetxController {
     }
   }
 
+  void previousStep() {
+    if (currentStep.value > 1) {
+      currentStep.value--;
+      selectedIndex.value = null;
+      selectedCheckInVibeIndex.value = null;
+      isLimitedFreeVersion.value = false;
+    }
+    if(currentStep.value == 1){
+            selectedIndex.value = null;
+      selectedCheckInVibeIndex.value = null;
+      isLimitedFreeVersion.value = false;
+      Get.back();
+    }
+  }
+
   void proceedToStep4() {
     if (currentStep.value == 3) {
       currentStep.value++;

@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:deanash_28/core/common/constants/app_colors.dart';
 import 'package:deanash_28/core/common/style/global_text_style.dart';
 import 'package:deanash_28/core/common/widgets/custom_button.dart';
@@ -17,37 +19,44 @@ class OnboardingScreen2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(OnboardingController());
-    return Scaffold(
-      backgroundColor: AppColors.backgroundColor,
-      body: Obx(
-        () {
-          if (controller.showYouAreAllSetDialog.value) {
-            // Show dialog
-            WidgetsBinding.instance.addPostFrameCallback((_) {
-              showDialog(
-                context: context,
-                barrierDismissible: true,
-                builder: (context) => YouAreAllSetDialog(controller: controller),
-              ).then((_) {
-                controller.showYouAreAllSetDialog.value = false;
+    return PopScope(
+      canPop: false,
+      onPopInvoked: (didPop) {
+        if (!didPop) {
+          controller.previousStep();
+        }
+      },
+      child: Scaffold(
+        backgroundColor: AppColors.backgroundColor,
+        body: Obx(
+          () {
+            if (controller.showYouAreAllSetDialog.value) {
+              // Show dialog
+              WidgetsBinding.instance.addPostFrameCallback((_) {
+                showDialog(
+                  context: context,
+                  barrierDismissible: true,
+                  builder: (context) => YouAreAllSetDialog(controller: controller),
+                ).then((_) {
+                  controller.showYouAreAllSetDialog.value = false;
+                });
               });
-            });
-          }
-          return gradientBackground(
-            SingleChildScrollView(
-              child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 18.w),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 45.h),
-                    GestureDetector(
-                      onTap: () {
-                        Get.back();
-                      },
-                      child: Image.asset(
-                        Iconpath.backIcon,
-                        width: 40.w,
+            }
+            return gradientBackground(
+              SingleChildScrollView(
+                child: Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 18.w),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      SizedBox(height: 45.h),
+                      GestureDetector(
+                        onTap: () {
+                          controller.previousStep();
+                        },
+                        child: Image.asset(
+                          Iconpath.backIcon,
+                          width: 40.w,
                         height: 40.h,
                       ),
                     ),
@@ -113,6 +122,7 @@ class OnboardingScreen2 extends StatelessWidget {
             ),
           );
         },
+      ),
       ),
     );
   }
