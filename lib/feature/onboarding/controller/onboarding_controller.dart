@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import '../../../core/common/constants/icons_path.dart';
 import '../model/onboarding_personality_model.dart';
@@ -5,28 +6,10 @@ import '../model/onboarding_personality_model.dart';
 class OnboardingController extends GetxController {
   final selectedIndex = Rx<int?>(null);
 
-  final List<PersonalityOption> options = [
-    PersonalityOption(
-      title: "I'm Starting From Zero",
-      description: "Starting to build a solid financial habit.",
-      iconPath: Iconpath.startIcon,
-    ),
-    PersonalityOption(
-      title: "I'm a Spender",
-      description: "Build your savings and emergency fund",
-      iconPath: Iconpath.spenderIcon,
-    ),
-    PersonalityOption(
-      title: "I'm Drowning in Debt",
-      description: "Eliminate debt and build financial stability",
-      iconPath: Iconpath.debtIcon,
-    ),
-    PersonalityOption(
-      title: "I'm Ready to Build Wealth",
-      description: "Grow investments and long-term assets",
-      iconPath: Iconpath.wealthIcon,
-    ),
-  ];
+  // Step 2 TextControllers
+  final monthlyIncomeController = TextEditingController();
+  final totalDebtController = TextEditingController();
+  final currentBalanceController = TextEditingController();
 
   var currentStep = 1.obs;
   var totalSteps = 4;
@@ -48,9 +31,63 @@ class OnboardingController extends GetxController {
     },
     4: {
       'title': 'Unlock Your Full Money Potential',
-      'subtitle': 'Join 50,000+ people who transformed their finances with Monev8 Premium.',
+      'subtitle':
+          'Join 50,000+ people who transformed their finances with Monev8 Premium.',
     },
   };
+
+  // Step-specific options
+  late final Map<int, List<PersonalityOption>> stepOptions = {
+    1: [
+      PersonalityOption(
+        title: "I'm Starting From Zero",
+        description: "Starting to build a solid financial habit.",
+        iconPath: Iconpath.startIcon,
+      ),
+      PersonalityOption(
+        title: "I'm a Spender",
+        description: "Build your savings and emergency fund",
+        iconPath: Iconpath.spenderIcon,
+      ),
+      PersonalityOption(
+        title: "I'm Drowning in Debt",
+        description: "Eliminate debt and build financial stability",
+        iconPath: Iconpath.debtIcon,
+      ),
+      PersonalityOption(
+        title: "I'm Ready to Build Wealth",
+        description: "Grow investments and long-term assets",
+        iconPath: Iconpath.wealthIcon,
+      ),
+    ],
+    2: [],
+    3: [
+      PersonalityOption(
+        title: "Friendly",
+        description: "Supportive and understanding guidance",
+        subDescription: "\"Great job! Every small step counts 💪\"",
+        iconPath: Iconpath.friendlyIcon,
+      ),
+      PersonalityOption(
+        title: "Motivational",
+        description: "Push-me enthusiastically from the momentum 🚀",
+        subDescription: "\"You're crushing it! Keep that momentum! 🔥\"",
+
+        iconPath: Iconpath.motivationalIcon,
+      ),
+      PersonalityOption(
+        title: "Strict",
+        description: "Direct and accountability-focused no-nonsense 💪",
+        subDescription: "\"No excuses. Stick to the plan. 💼\"",
+
+        iconPath: Iconpath.strictIcon,
+      ),
+    ],
+    4: [],
+  };
+
+  List<PersonalityOption> get currentStepOptions =>
+      stepOptions[currentStep.value] ?? [];
 
   String getStepTitle() => stepContent[currentStep.value]?['title'] ?? '';
   String getStepSubtitle() => stepContent[currentStep.value]?['subtitle'] ?? '';
@@ -62,7 +99,16 @@ class OnboardingController extends GetxController {
   void nextStep() {
     if (currentStep.value < totalSteps) {
       currentStep.value++;
+      selectedIndex.value = null;
       xp.value += 10;
     }
+  }
+
+  @override
+  void onClose() {
+    monthlyIncomeController.dispose();
+    totalDebtController.dispose();
+    currentBalanceController.dispose();
+    super.onClose();
   }
 }

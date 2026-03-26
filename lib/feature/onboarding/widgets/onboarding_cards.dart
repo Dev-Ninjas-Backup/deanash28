@@ -18,58 +18,76 @@ class OnboardingCards extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Obx(
-      () => Container(
-        margin: EdgeInsets.only(bottom: 12.h),
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
-        decoration: BoxDecoration(
-          border: Border.all(
-            color: controller.selectedIndex.value == index
-                ? AppColors.primaryTextColor
-                : AppColors.primaryTextColor.withValues(alpha: 0.08),
-            width: controller.selectedIndex.value == index ? 1.5 : 1,
-          ),
-          borderRadius: BorderRadius.circular(16.r),
-          color: const Color.fromARGB(255, 29, 10, 10).withValues(
-            alpha: controller.selectedIndex.value == index ? 0.08 : 0.05,
-          ),
-        ),
-        child: Row(
-        mainAxisAlignment: MainAxisAlignment.start,
-        crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Image.asset(
-              controller.options[index].iconPath,
-              width: 48.w,
-              height: 48.h,
-            ),
-            SizedBox(width: 16.w),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Text(
-                    controller.options[index].title,
-                    style: getTextStyle(
-                      fontsize: sp(20),
-                      fontweight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 4.h),
-                  Text(
-                    controller.options[index].description,
-                    style: getTextStyle(
-                      fontsize: sp(14),
-                      fontweight: FontWeight.w300,
-                    ),
-                    maxLines: 2,
-                    overflow: TextOverflow.ellipsis,
-                  ),
-                ],
+      () {
+        final option = controller.currentStepOptions[index];
+        return Obx(
+          () => Container(
+            margin: EdgeInsets.only(bottom: 12.h),
+            padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
+            decoration: BoxDecoration(
+              border: Border.all(
+                color: controller.selectedIndex.value == index
+                    ? AppColors.primaryTextColor
+                    : AppColors.primaryTextColor.withValues(alpha: 0.08),
+                width: controller.selectedIndex.value == index ? 1.5 : 1,
+              ),
+              borderRadius: BorderRadius.circular(16.r),
+              color: const Color.fromARGB(255, 29, 10, 10).withValues(
+                alpha: controller.selectedIndex.value == index ? 0.08 : 0.05,
               ),
             ),
-          ],
-        ),
-      ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Image.asset(
+                  option.iconPath,
+                  width: 48.w,
+                  height: 48.h,
+                ),
+                SizedBox(width: 16.w),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        option.title,
+                        style: getTextStyle(
+                          fontsize: sp(20),
+                          fontweight: FontWeight.w600,
+                        ),
+                      ),
+                      SizedBox(height: 4.h),
+                      Text(
+                        option.description,
+                        style: getTextStyle(
+                          fontsize: sp(14),
+                          fontweight: FontWeight.w300,
+                        ),
+                        maxLines: 4,
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                      if (option.subDescription != null) ...[
+                        SizedBox(height: 4.h),
+                        Text(
+                          option.subDescription!,
+                          style: getTextStyle(
+                            fontsize: sp(12),
+                            fontweight: FontWeight.w300,
+                            color: AppColors.primaryTextColor,
+                          ),
+                          maxLines: 4,
+                          overflow: TextOverflow.ellipsis,
+                        ),
+                      ],
+                    ],
+                  ),
+                ),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }
