@@ -5,6 +5,8 @@ import '../model/onboarding_personality_model.dart';
 
 class OnboardingController extends GetxController {
   final selectedIndex = Rx<int?>(null);
+  final selectedCheckInVibeIndex = Rx<int?>(null);
+  final showYouAreAllSetDialog = false.obs;
 
   // Step 2 TextControllers
   final monthlyIncomeController = TextEditingController();
@@ -86,6 +88,30 @@ class OnboardingController extends GetxController {
     4: [],
   };
 
+  // Check-in vibe options
+  final List<Map<String, String>> checkInVibeOptions = [
+    {
+      'title': 'Crushed it!',
+      'subtitle': 'Completed',
+      'emoji': '😊',
+    },
+    {
+      'title': 'Okay day',
+      'subtitle': 'XP Earned',
+      'emoji': '😐',
+    },
+    {
+      'title': 'Slipped up',
+      'subtitle': 'Completed',
+      'emoji': '😬',
+    },
+    {
+      'title': 'Rough day',
+      'subtitle': 'XP Earned',
+      'emoji': '😩',
+    },
+  ];
+
   List<PersonalityOption> get currentStepOptions =>
       stepOptions[currentStep.value] ?? [];
 
@@ -96,10 +122,26 @@ class OnboardingController extends GetxController {
     selectedIndex.value = index;
   }
 
+  void selectCheckInVibe(int index) {
+    selectedCheckInVibeIndex.value = index;
+  }
+
   void nextStep() {
-    if (currentStep.value < totalSteps) {
+    if (currentStep.value == 3) {
+      showYouAreAllSetDialog.value = true;
+    } else if (currentStep.value < totalSteps) {
       currentStep.value++;
       selectedIndex.value = null;
+      xp.value += 10;
+    }
+  }
+
+  void proceedToStep4() {
+    if (currentStep.value == 3) {
+      currentStep.value++;
+      selectedIndex.value = null;
+      selectedCheckInVibeIndex.value = null;
+      showYouAreAllSetDialog.value = false;
       xp.value += 10;
     }
   }

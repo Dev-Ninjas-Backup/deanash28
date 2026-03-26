@@ -13,4 +13,5 @@ class Iconpath {
   static String friendlyIcon = 'assets/icons/friendly.png';
   static String motivationalIcon = 'assets/icons/motivational.png';
   static String strictIcon = 'assets/icons/strict.png';
+  static String setAllSetIcon = 'assets/icons/all_set.png';
 }
