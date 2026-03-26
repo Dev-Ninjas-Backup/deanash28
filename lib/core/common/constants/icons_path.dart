@@ -14,4 +14,17 @@ class Iconpath {
   static String motivationalIcon = 'assets/icons/motivational.png';
   static String strictIcon = 'assets/icons/strict.png';
   static String setAllSetIcon = 'assets/icons/all_set.png';
+  static String sevendayChallengeIcon = 'assets/icons/7day_challange.png';
+  static String premiumIcon = 'assets/icons/premium.png'; 
+  static String thirtydayChallengeIcon = 'assets/icons/30days_structure.png';
+  static String advancedProgressIcon = 'assets/icons/advanced_progress.png';
+  static String annuallyIcon = 'assets/icons/annually.png';
+  static String monthlyIcon = 'assets/icons/monthly.png';
+  static String dailyCheckInIcon = 'assets/icons/daily_check.png';
+  static String exposeIcon = 'assets/icons/expose.png';
+  static String priorityCoachIcon = 'assets/icons/priority_coach.png';
+  static String unlimitedFinancialIcon = 'assets/icons/unlimited_financial.png';
+  static String weeklyAiicon = 'assets/icons/weekly_ai.png';
+
+
 }

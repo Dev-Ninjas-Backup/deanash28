@@ -6,6 +6,7 @@ import 'package:deanash_28/feature/onboarding/controller/onboarding_controller.d
 import 'package:deanash_28/feature/onboarding/widgets/onboarding_cards.dart';
 import 'package:deanash_28/feature/onboarding/widgets/onboarding_progress_indicator.dart';
 import 'package:deanash_28/feature/onboarding/widgets/you_are_all_set_dialog.dart';
+import 'package:deanash_28/feature/onboarding/widgets/step4_premium_content.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -77,27 +78,33 @@ class OnboardingScreen2 extends StatelessWidget {
                     Obx(
                       () => controller.currentStep.value == 2
                           ? buildStep2Content(controller)
-                          : Column(
-                              children: List.generate(
-                                controller.currentStepOptions.length,
-                                (index) => GestureDetector(
-                                  onTap: () {
-                                    controller.selectOption(index);
-                                  },
-                                  child: OnboardingCards(
-                                    controller: controller,
-                                    index: index,
+                          : controller.currentStep.value == 4
+                              ? Step4PremiumContent(controller: controller)
+                              : Column(
+                                  children: List.generate(
+                                    controller.currentStepOptions.length,
+                                    (index) => GestureDetector(
+                                      onTap: () {
+                                        controller.selectOption(index);
+                                      },
+                                      child: OnboardingCards(
+                                        controller: controller,
+                                        index: index,
+                                      ),
+                                    ),
                                   ),
                                 ),
-                              ),
-                            ),
                     ),
                     SizedBox(height: 30.h),
-                    CustomButton(
-                      title: "Continue",
-                      ontap: () {
-                        controller.nextStep();
-                      },
+                    Obx(
+                      () => controller.currentStep.value == 4
+                          ? SizedBox.shrink()
+                          : CustomButton(
+                              title: "Continue",
+                              ontap: () {
+                                controller.nextStep();
+                              },
+                            ),
                     ),
                     SizedBox(height: 50.h),
                   ],
