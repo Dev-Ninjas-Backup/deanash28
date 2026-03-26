@@ -15,6 +15,14 @@ class Step4PremiumContent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    return Obx(
+      () => controller.isLimitedFreeVersion.value
+          ? _buildLimitedFreeContent()
+          : _buildPremiumContent(),
+    );
+  }
+
+  Widget _buildPremiumContent() {
     return SingleChildScrollView(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -108,7 +116,7 @@ class Step4PremiumContent extends StatelessWidget {
           Center(
             child: GestureDetector(
               onTap: () {
-
+                controller.isLimitedFreeVersion.value = true;
               },
               child: Text(
                 'Continue with limited free features',
@@ -122,6 +130,62 @@ class Step4PremiumContent extends StatelessWidget {
                       decorationColor: AppColors.primaryTextColor,
                       height: 2,
                     ),
+              ),
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+
+  Widget _buildLimitedFreeContent() {
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          buildFeaturesTable(),
+          SizedBox(height: 32.h),
+
+          // Continue With Free Access button
+          CustomButton(
+            title: 'Continue With Free Access',
+            ontap: () {
+              EasyLoading.show(status: 'Loading Free Version...');
+              Future.delayed(Duration(seconds: 1), () {
+                EasyLoading.dismiss();
+              });
+            },
+          ),
+          SizedBox(height: 16.h),
+
+          Center(
+            child: GestureDetector(
+              onTap: () {},
+              child: Text(
+                'Continue with 7 Days Premium Trial',
+                style:
+                    getTextStyle(
+                      fontsize: sp(14),
+                      fontweight: FontWeight.w300,
+                      color: AppColors.primaryTextColor,
+                    ).copyWith(
+                      decoration: TextDecoration.underline,
+                      decorationColor: AppColors.primaryTextColor,
+                    ),
+              ),
+            ),
+          ),
+          SizedBox(height: 16.h),
+
+          // Footer text
+          Center(
+            child: Text(
+              'After 7-day premium trial, \$4.99 per month will be charged or will be demoted to the free version.',
+              textAlign: TextAlign.center,
+              style: getTextStyle(
+                fontsize: sp(14),
+                fontweight: FontWeight.w300,
+                color: AppColors.primaryTextColor,
               ),
             ),
           ),
