@@ -8,6 +8,7 @@ class OnboardingController extends GetxController {
   final selectedCheckInVibeIndex = Rx<int?>(null);
   final showYouAreAllSetDialog = false.obs;
   final selectedBillingCycle = Rx<String?>('monthly');
+  final isLimitedFreeVersion = false.obs;
 
   // Step 2 TextControllers
   final monthlyIncomeController = TextEditingController();
@@ -91,33 +92,28 @@ class OnboardingController extends GetxController {
 
   // Check-in vibe options
   final List<Map<String, String>> checkInVibeOptions = [
-    {
-      'title': 'Crushed it!',
-      'subtitle': 'Completed',
-      'emoji': '😊',
-    },
-    {
-      'title': 'Okay day',
-      'subtitle': 'XP Earned',
-      'emoji': '😐',
-    },
-    {
-      'title': 'Slipped up',
-      'subtitle': 'Completed',
-      'emoji': '😬',
-    },
-    {
-      'title': 'Rough day',
-      'subtitle': 'XP Earned',
-      'emoji': '😩',
-    },
+    {'title': 'Crushed it!', 'subtitle': 'Completed', 'emoji': '😊'},
+    {'title': 'Okay day', 'subtitle': 'XP Earned', 'emoji': '😐'},
+    {'title': 'Slipped up', 'subtitle': 'Completed', 'emoji': '😬'},
+    {'title': 'Rough day', 'subtitle': 'XP Earned', 'emoji': '😩'},
   ];
 
   List<PersonalityOption> get currentStepOptions =>
       stepOptions[currentStep.value] ?? [];
 
-  String getStepTitle() => stepContent[currentStep.value]?['title'] ?? '';
-  String getStepSubtitle() => stepContent[currentStep.value]?['subtitle'] ?? '';
+  String getStepTitle() {
+    if (currentStep.value == 4 && isLimitedFreeVersion.value) {
+      return 'Continue With Free';
+    }
+    return stepContent[currentStep.value]?['title'] ?? '';
+  }
+
+  String getStepSubtitle() {
+    if (currentStep.value == 4 && isLimitedFreeVersion.value) {
+      return 'Limited access to overall features';
+    }
+    return stepContent[currentStep.value]?['subtitle'] ?? '';
+  }
 
   void selectOption(int index) {
     selectedIndex.value = index;
