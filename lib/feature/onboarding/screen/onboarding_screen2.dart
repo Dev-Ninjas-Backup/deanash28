@@ -9,7 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../core/common/constants/icons_path.dart';
-
+import '../widgets/step2_content.dart';
 class OnboardingScreen2 extends StatelessWidget {
   const OnboardingScreen2({super.key});
   @override
@@ -59,20 +59,31 @@ class OnboardingScreen2 extends StatelessWidget {
                   ),
                 ),
                 SizedBox(height: 32.h),
-                ...List.generate(
-                  controller.options.length,
-                  (index) => GestureDetector(
-                    onTap: () {
-                      controller.selectOption(index);
-                    },
-                    child: OnboardingCards(
-                      controller: controller,
-                      index: index,
-                    ),
-                  ),
+                Obx(
+                  () => controller.currentStep.value == 2
+                      ? buildStep2Content(controller)
+                      : Column(
+                          children: List.generate(
+                            controller.currentStepOptions.length,
+                            (index) => GestureDetector(
+                              onTap: () {
+                                controller.selectOption(index);
+                              },
+                              child: OnboardingCards(
+                                controller: controller,
+                                index: index,
+                              ),
+                            ),
+                          ),
+                        ),
                 ),
                 SizedBox(height: 30.h),
-                CustomButton(title: "Continue", ontap: () {controller.nextStep();}),
+                CustomButton(
+                  title: "Continue",
+                  ontap: () {
+                    controller.nextStep();
+                  },
+                ),
                 SizedBox(height: 50.h),
               ],
             ),
@@ -81,4 +92,5 @@ class OnboardingScreen2 extends StatelessWidget {
       ),
     );
   }
-}
+
+ }

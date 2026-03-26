@@ -1,3 +1,4 @@
+import 'package:deanash_28/core/common/style/global_text_style.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:deanash_28/core/common/constants/app_colors.dart';
@@ -31,17 +32,16 @@ class CustomTextField extends StatelessWidget {
       obscureText: isPassword && !isPasswordVisible,
       keyboardType: keyboardType,
       validator: validator,
-      style: TextStyle(color: AppColors.primaryTextColor, fontSize: 14.sp),
+      style: getTextStyle(color: AppColors.primaryTextColor, fontsize: sp(14)),
       decoration: InputDecoration(
         hintText: hintText,
-        hintStyle: TextStyle(
-          color: AppColors.primaryTextColor,
-          fontSize: 14.sp,
+        hintStyle: getTextStyle(
+          fontsize: sp(14),
         ),
         prefixIcon: Icon(
           prefixIcon,
           color: AppColors.primaryTextColor,
-          size: 18.sp,
+          size: sp(18),
         ),
         suffixIcon: isPassword
             ? GestureDetector(
@@ -49,7 +49,7 @@ class CustomTextField extends StatelessWidget {
                 child: Icon(
                   isPasswordVisible ? Icons.visibility : Icons.visibility_off,
                   color: AppColors.primaryTextColor,
-                  size: 18.sp,
+                  size: sp(18),
                 ),
               )
             : null,

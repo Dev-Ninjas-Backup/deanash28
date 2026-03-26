@@ -40,7 +40,7 @@ class SignInScreen extends StatelessWidget {
                       Text(
                         "Get Signed in.",
                         style: getTextStyle(
-                          fontsize: 25.sp,
+                          fontsize: sp(25),
                           fontweight: FontWeight.w700,
                         ),
                       ),
@@ -51,7 +51,7 @@ class SignInScreen extends StatelessWidget {
                 Text(
                   "Email:",
                   style: getTextStyle(
-                    fontsize: 16.sp,
+                    fontsize: sp(16),
                     fontweight: FontWeight.w700,
                   ),
                 ),
@@ -66,7 +66,7 @@ class SignInScreen extends StatelessWidget {
                 Text(
                   "Password:",
                   style: getTextStyle(
-                    fontsize: 16.sp,
+                    fontsize: sp(16),
                     fontweight: FontWeight.w700,
                   ),
                 ),
@@ -109,7 +109,7 @@ class SignInScreen extends StatelessWidget {
                           Text(
                             "Remember me",
                             style: getTextStyle(
-                              fontsize: 14.sp,
+                              fontsize: sp(14),
                               fontweight: FontWeight.w400,
                             ),
                           ),
@@ -123,7 +123,7 @@ class SignInScreen extends StatelessWidget {
                       child: Text(
                         "Forgot Password?",
                         style: getTextStyle(
-                          fontsize: 14.sp,
+                          fontsize: sp(14),
                           fontweight: FontWeight.w400,
                           color: AppColors.primaryTextColor,
                         ),
@@ -145,7 +145,7 @@ class SignInScreen extends StatelessWidget {
                     Text(
                       "New at Monev8? ",
                       style: getTextStyle(
-                        fontsize: 14.sp,
+                        fontsize: sp(14),
                         fontweight: FontWeight.w400,
                       ),
                     ),
@@ -156,7 +156,7 @@ class SignInScreen extends StatelessWidget {
                       child: Text(
                         "Register",
                         style: getTextStyle(
-                          fontsize: 14.sp,
+                          fontsize: sp(14),
                           fontweight: FontWeight.w500,
                           color: AppColors.primaryTextColor,
                         ),
