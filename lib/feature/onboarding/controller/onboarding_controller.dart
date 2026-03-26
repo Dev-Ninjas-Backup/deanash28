@@ -7,6 +7,7 @@ class OnboardingController extends GetxController {
   final selectedIndex = Rx<int?>(null);
   final selectedCheckInVibeIndex = Rx<int?>(null);
   final showYouAreAllSetDialog = false.obs;
+  final selectedBillingCycle = Rx<String?>('monthly');
 
   // Step 2 TextControllers
   final monthlyIncomeController = TextEditingController();
@@ -124,6 +125,10 @@ class OnboardingController extends GetxController {
 
   void selectCheckInVibe(int index) {
     selectedCheckInVibeIndex.value = index;
+  }
+
+  void selectBillingCycle(String cycle) {
+    selectedBillingCycle.value = cycle;
   }
 
   void nextStep() {

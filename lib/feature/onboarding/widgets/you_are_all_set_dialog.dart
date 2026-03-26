@@ -10,7 +10,6 @@ import '../controller/onboarding_controller.dart';
 
 class YouAreAllSetDialog extends StatelessWidget {
   final OnboardingController controller;
-
   const YouAreAllSetDialog({required this.controller, super.key});
   @override
   Widget build(BuildContext context) {
