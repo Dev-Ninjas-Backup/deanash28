@@ -25,6 +25,7 @@ class Iconpath {
   static String priorityCoachIcon = 'assets/icons/priority_coach.png';
   static String unlimitedFinancialIcon = 'assets/icons/unlimited_financial.png';
   static String weeklyAiicon = 'assets/icons/weekly_ai.png';
+  static String dartIcon = 'assets/icons/dart.png';
 
 
 }
