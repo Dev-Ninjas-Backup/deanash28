@@ -11,7 +11,7 @@ SizedBox gradientBackground(Widget? widgets) {
           Positioned(
             top: -146.h,
             left: -146.w,
-            child: _buildGlow(
+            child: buildGlow(
               321.h,
               321.w,
               AppColors.bacgroundPositioncolor,
@@ -22,7 +22,7 @@ SizedBox gradientBackground(Widget? widgets) {
           Positioned(
             top: 313.h,
             left: 298.w,
-            child: _buildGlow(
+            child: buildGlow(
               190.h,
               190.w,
               AppColors.bacgroundPositioncolor.withValues(alpha: .60.sp),
@@ -33,7 +33,7 @@ SizedBox gradientBackground(Widget? widgets) {
           Positioned(
             top: 723.h,
             left: 54.w,
-            child: _buildGlow(
+            child: buildGlow(
               285.h,
               285.w,
               AppColors.bacgroundPositioncolor.withValues(alpha: .25.sp),
@@ -47,7 +47,7 @@ SizedBox gradientBackground(Widget? widgets) {
     );
   }
 
-  Widget _buildGlow(
+  Widget buildGlow(
     double height,
     double width,
     Color color,

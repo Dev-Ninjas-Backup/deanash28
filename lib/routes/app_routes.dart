@@ -7,6 +7,7 @@ import '../feature/auth/forgot_password/screen/otp_forgot_screen.dart';
 import '../feature/auth/forgot_password/screen/otp_registration_screen.dart';
 import '../feature/auth/forgot_password/screen/update_password_screen.dart';
 import '../feature/auth/sign_up/screen/registration_screen.dart';
+import '../feature/home/screem/home_page.dart';
 import '../feature/onboarding/screen/onboarding_screen1.dart';
 import '../feature/onboarding/screen/onboarding_screen2.dart';
 
@@ -25,6 +26,9 @@ class AppRoute {
   static String onboardingScreen1 = '/onboardingScreen1';
   static String onboardingScreen2 = '/onboardingScreen2';
 
+  //home
+  static String homeScreen = '/homeScreen';
+
   //auth
   static String getSplashScreen() => splashScreen;
   static String getSignInScreen() => signInScreen;
@@ -37,6 +41,8 @@ class AppRoute {
   //onboarding
   static String getOnboardingScreen1() => onboardingScreen1;
   static String getOnboardingScreen2() => onboardingScreen2;
+  //home
+  static String getHomeScreen() => homeScreen;
   static List<GetPage> routes = [
     GetPage(name: splashScreen, page: () => SplashScreen()),
 
@@ -92,5 +98,12 @@ class AppRoute {
       transitionDuration: const Duration(milliseconds: 500),
     ),
 
+    //home
+    GetPage(
+      name: homeScreen,
+      page: () => HomePage(),
+      transition: Transition.zoom,
+      transitionDuration: const Duration(milliseconds: 500),
+    ),
   ];
 }
