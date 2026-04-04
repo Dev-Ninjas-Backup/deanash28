@@ -138,7 +138,7 @@ class CoachCard extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(height: 20.h),
+          SizedBox(height: 8.h),
 
           Row(
             children: [
@@ -151,11 +151,11 @@ class CoachCard extends StatelessWidget {
                     foregroundColor: AppColors.secondaryTextColor,
                     side: BorderSide(color: AppColors.secondaryTextColor),
                     shape: StadiumBorder(),
-                    padding: EdgeInsets.symmetric(vertical: 15.h),
+                    padding: EdgeInsets.symmetric(vertical: 8.h),
                   ),
                 ),
               ),
-              SizedBox(width: 10),
+              SizedBox(width: 10.w),
               Expanded(
                 child: ElevatedButton(
                   onPressed: () {},
@@ -163,7 +163,7 @@ class CoachCard extends StatelessWidget {
                     backgroundColor: AppColors.buttonColor,
                     foregroundColor: AppColors.primaryTextColor,
                     shape: StadiumBorder(),
-                    padding: EdgeInsets.symmetric(vertical: 15.h),
+                    padding: EdgeInsets.symmetric(vertical: 8.h),
                   ),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -31,6 +31,10 @@ class Iconpath {
   static String logIncome = 'assets/icons/log_income.png';
   static String logSavings = 'assets/icons/log_service.png';
   static String logExpense = 'assets/icons/log_expanse.png';
+  static String logHistoryDebtDebit = 'assets/icons/log_history_debit.png';
+  static String logHistorySavings = 'assets/icons/log_history_saving.png';
+  static String logHistoryIncome = 'assets/icons/log_history_income.png';
+  static String xpIcon = 'assets/icons/xp.png';
 
 
 }
