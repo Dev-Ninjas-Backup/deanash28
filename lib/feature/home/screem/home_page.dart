@@ -6,6 +6,7 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../core/common/widgets/custom_app_bar.dart';
 import '../controller/home_controller.dart';
+import '../widgets/build_log_history.dart';
 import '../widgets/build_quic_action.dart';
 import '../widgets/debt_freedom_progress.dart';
 import '../widgets/level_home.dart';
@@ -41,6 +42,8 @@ class HomePage extends StatelessWidget {
                   buildQuickActions(controller),
                   SizedBox(height: 16.h),
                   CoachCard(controller: controller),
+                  SizedBox(height: 24.h),
+                  buildLogHistory(controller),
                 ],
               ),
             ),
@@ -49,4 +52,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
+
+
 }
