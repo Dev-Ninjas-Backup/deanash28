@@ -101,21 +101,7 @@ Widget buildMissionCard() {
                   ),
                 ),
                 SizedBox(height: 8.h),
-                ShaderMask(
-                  shaderCallback: (bounds) => LinearGradient(
-                    colors: [const Color(0xFF2AFF83), const Color(0xFFFFFFFF)],
-                    begin: Alignment.topLeft,
-                    end: Alignment.bottomRight,
-                  ).createShader(bounds),
-                  child: Text(
-                    'Track your first debt',
-                    style: getTextStyle(
-                      fontsize: sp(28),
-                      fontweight: FontWeight.w700,
-                      color: Colors.white,
-                    ),
-                  ),
-                ),
+                ShaderMaskTextGradient(),
                 SizedBox(height: 16.h),
                 // Button
                 CustomButton(title: "Start Today's Check-In  ➔ ", ontap: () {}),
@@ -126,4 +112,28 @@ Widget buildMissionCard() {
       ),
     ),
   );
+}
+
+class ShaderMaskTextGradient extends StatelessWidget {
+  const ShaderMaskTextGradient({
+    super.key,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return ShaderMask(
+      shaderCallback: (bounds) => LinearGradient(
+        colors: [const Color(0xFF2AFF83), const Color(0xFFFFFFFF)],
+        begin: Alignment.topLeft,
+        end: Alignment.bottomRight,
+      ).createShader(bounds),
+      child: Text(
+        'Track your first debt',
+        style: getTextStyle(
+          fontsize: sp(28),
+          fontweight: FontWeight.w700,
+        ),
+      ),
+    );
+  }
 }

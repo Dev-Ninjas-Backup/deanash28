@@ -26,6 +26,11 @@ class Iconpath {
   static String unlimitedFinancialIcon = 'assets/icons/unlimited_financial.png';
   static String weeklyAiicon = 'assets/icons/weekly_ai.png';
   static String dartIcon = 'assets/icons/dart.png';
+  static String lock = 'assets/icons/LockClose.png';
+  static String logDebtPayment = 'assets/icons/log_debt_payment.png';
+  static String logIncome = 'assets/icons/log_income.png';
+  static String logSavings = 'assets/icons/log_service.png';
+  static String logExpense = 'assets/icons/log_expanse.png';
 
 
 }
