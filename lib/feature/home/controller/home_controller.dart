@@ -65,4 +65,28 @@ class HomeController extends GetxController {
   void addTransaction(TransactionModel transaction) {
     transactionHistory.insert(0, transaction);
   }
+
+  // Premium/Billing
+  final isBillingMonthly = true.obs;
+  final premiumPrice = 4.99.obs;
+  final isPremiumUser = false.obs;
+
+  void toggleBillingCycle() {
+    isBillingMonthly.value = !isBillingMonthly.value;
+  }
+
+  void upgradeToPremium() {
+    isPremiumUser.value = true;
+  }
+
+
+//billing
+
+var isMonthly = true.obs;
+  
+  void toggleBilling(bool value) {
+    isMonthly.value = value;
+  }
+
+  double get price => isMonthly.value ? 4.99 : 3.99;
 }

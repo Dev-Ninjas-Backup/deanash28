@@ -1,6 +1,7 @@
 import 'package:deanash_28/core/common/constants/app_colors.dart';
 import 'package:deanash_28/feature/home/widgets/build_mission_card.dart';
 import 'package:deanash_28/feature/home/widgets/coach_card.dart';
+import 'package:deanash_28/feature/home/widgets/premium_card.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
@@ -13,12 +14,9 @@ import '../widgets/level_home.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
-
   @override
   Widget build(BuildContext context) {
-    // Initialize HomeController
     final controller = Get.put(HomeController());
-
     return Scaffold(
       backgroundColor: AppColors.primaryTextColor,
       body: SingleChildScrollView(
@@ -44,6 +42,9 @@ class HomePage extends StatelessWidget {
                   CoachCard(controller: controller),
                   SizedBox(height: 24.h),
                   buildLogHistory(controller),
+                  SizedBox(height: 20.h),
+                  PremiumCard(controller: controller),
+                  SizedBox(height: 50.h),
                 ],
               ),
             ),
@@ -52,6 +53,4 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
-
 }
