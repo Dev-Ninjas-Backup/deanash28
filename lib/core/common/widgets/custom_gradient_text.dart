@@ -1,3 +1,4 @@
+import 'package:deanash_28/core/common/style/global_text_style.dart';
 import 'package:flutter/material.dart';
 
 class GradientText extends StatelessWidget {
@@ -28,10 +29,10 @@ class GradientText extends StatelessWidget {
       ).createShader(bounds),
       child: Text(
         text,
-        style: TextStyle(
-          fontSize: fontSize,
-          fontWeight: fontWeight,
-          color: Colors.white, // Important for ShaderMask
+        style: getTextStyle(
+          fontsize: fontSize,
+          fontweight: fontWeight,
+          color: Colors.white, 
         ),
       ),
     );
