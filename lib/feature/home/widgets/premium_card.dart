@@ -8,18 +8,14 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 import '../../../core/common/widgets/gradient_background.dart';
 import '../controller/home_controller.dart';
-
 class PremiumCard extends StatelessWidget {
   final HomeController controller;
-
   const PremiumCard({super.key, required this.controller});
-
   @override
   Widget build(BuildContext context) {
     return ClipRRect(
       borderRadius: BorderRadius.circular(16.r),
       child: Container(
-        // padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
         decoration: BoxDecoration(color: const Color(0xFF06190A)),
         child: Stack(
           children: [
@@ -92,7 +88,6 @@ class PremiumCard extends StatelessWidget {
                       ),
                     ],
                   ),
-
                   Obx(
                     () => Row(
                       children: [
@@ -111,7 +106,6 @@ class PremiumCard extends StatelessWidget {
                     ),
                   ),
                   SizedBox(height: 6.h),
-
                   Text(
                     "Unlock the full 30-day program and AI Coach",
                     style: getTextStyle(
@@ -131,7 +125,6 @@ class PremiumCard extends StatelessWidget {
                 ],
               ),
             ),
-
             Positioned(
               right: 20.w,
               top: 30.h,
