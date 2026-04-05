@@ -52,7 +52,10 @@ Widget buildLogHistory(HomeController controller) {
           separatorBuilder: (context, index) => SizedBox(height: 12.h),
           itemBuilder: (context, index) {
             final transaction = controller.transactionHistory[index];
-            return buildTransactionCard(transaction);
+            return Padding(
+              padding:  EdgeInsets.only(bottom: 4.h),
+              child: buildTransactionCard(transaction),
+            );
           },
         ),
       ),
