@@ -1,5 +1,4 @@
 import 'package:deanash_28/feature/navbar/navbar_wid/navbar_main_shell.dart';
-import 'package:deanash_28/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
