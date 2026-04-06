@@ -18,21 +18,21 @@ class CustomAppBar extends StatelessWidget {
         bottomRight: Radius.circular(30.r),
       ),
       child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 8.w),
+        padding: EdgeInsets.symmetric(horizontal: 8.w,),
         decoration: BoxDecoration(
           color: Color(0xFF39FF14).withValues(alpha: .008),
           border: Border(
             left: BorderSide(
               color: AppColors.primaryTextColor.withValues(alpha: 0.08),
-              width: 2,
+              width: 2.w,
             ),
             right: BorderSide(
               color: AppColors.primaryTextColor.withValues(alpha: 0.08),
-              width: 2,
+              width: 2.w,
             ),
             bottom: BorderSide(
               color: AppColors.primaryTextColor.withValues(alpha: 0.08),
-              width: 2,
+              width: 2.w,
             ),
           ),
         ),
@@ -54,7 +54,7 @@ class CustomAppBar extends StatelessWidget {
             ),
             SafeArea(
               child: Padding(
-                padding: EdgeInsets.symmetric(horizontal: 16.w),
+                padding: EdgeInsets.symmetric(horizontal: 16.w,vertical: 16),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
