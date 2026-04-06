@@ -45,7 +45,6 @@ class HomePage extends StatelessWidget {
                   buildLogHistory(controller),
                   SizedBox(height: 20.h),
                   PremiumCard(controller: controller),
-                  SizedBox(height: 50.h),
                 ],
               ),
             ),
