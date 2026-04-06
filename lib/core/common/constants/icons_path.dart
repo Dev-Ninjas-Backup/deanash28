@@ -42,6 +42,7 @@ class Iconpath {
   static String profileNavIcon="assets/icons/nav_profile.png";
   static String planIcon="assets/icons/nav_plan.png";
   static String progressIcon="assets/icons/nav_progress.png";
+  static String arrowIcon="assets/icons/arrow_back.png";
 
 
 }

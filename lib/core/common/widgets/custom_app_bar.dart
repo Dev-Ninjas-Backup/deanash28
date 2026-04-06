@@ -7,8 +7,8 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../style/global_text_style.dart';
 
-class CustomAppBar extends StatelessWidget {
-  const CustomAppBar({super.key});
+class CustomAppBarHome extends StatelessWidget {
+  const CustomAppBarHome({super.key});
 
   @override
   Widget build(BuildContext context) {

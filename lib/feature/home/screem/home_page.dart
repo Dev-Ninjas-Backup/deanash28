@@ -22,11 +22,8 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            // PreferredSize(
-            //   preferredSize: Size.fromHeight(80.h),
-            //   child: CustomAppBar(),
-            // ),
-            CustomAppBar(),
+
+            CustomAppBarHome(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
               child: Column(
