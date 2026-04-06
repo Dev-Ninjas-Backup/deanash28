@@ -1,3 +1,4 @@
+import 'package:deanash_28/feature/navbar/navbar_wid/navbar_main_shell.dart';
 import 'package:deanash_28/routes/app_routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_easyloading/flutter_easyloading.dart';
@@ -154,7 +155,8 @@ class Step4PremiumContent extends StatelessWidget {
               EasyLoading.show(status: 'Loading Free Version...');
               Future.delayed(Duration(seconds: 1), () {
                 EasyLoading.dismiss();
-                Get.offAllNamed(AppRoute.getHomeScreen());
+                Get.offAll(MainShell());
+               // Get.offAllNamed(AppRoute.getHomeScreen());
               });
             },
           ),

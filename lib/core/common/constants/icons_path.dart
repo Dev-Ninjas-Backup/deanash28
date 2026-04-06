@@ -36,6 +36,12 @@ class Iconpath {
   static String logHistoryIncome = 'assets/icons/log_history_income.png';
   static String xpIcon = 'assets/icons/xp.png';
   static String sheildIcon="assets/icons/sheild.png";
+  static String spendingIcon="assets/icons/nav__spnding.png";
+  static String coachIcon="assets/icons/nav_coach.png";
+  static String homeIcon="assets/icons/nav_home.png";
+  static String profileNavIcon="assets/icons/nav_profile.png";
+  static String planIcon="assets/icons/nav_plan.png";
+  static String progressIcon="assets/icons/nav_progress.png";
 
 
 }
