@@ -43,6 +43,9 @@ class Iconpath {
   static String planIcon="assets/icons/nav_plan.png";
   static String progressIcon="assets/icons/nav_progress.png";
   static String arrowIcon="assets/icons/arrow_back.png";
+  static String xpEarnIcon="assets/icons/xp_earn.png";
+  static String dayLeftIcon="assets/icons/day_left.png";
+  static String completedIcon="assets/icons/complete.png";
 
 
 }
