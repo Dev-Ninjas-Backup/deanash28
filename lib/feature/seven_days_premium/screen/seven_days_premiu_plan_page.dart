@@ -6,6 +6,8 @@ import 'package:get/get.dart';
 
 import '../../../core/common/constants/icons_path.dart';
 import '../../../core/common/widgets/custom_app_bar2.dart';
+import '../widgets/money_challange.dart';
+import '../widgets/daily_task_card.dart';
 
 class SevenDaysPremiuPlanPage extends StatelessWidget {
   const SevenDaysPremiuPlanPage({super.key});
@@ -17,6 +19,7 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
 
       body: SingleChildScrollView(
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             CustomAppBar2(
               leading: GestureDetector(
@@ -74,14 +77,31 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                 ),
               ),
             ),
-
-            Center(
-              child: Text(
-                '7 Days Premium Plan Content Goes Here',
-                style: TextStyle(
-                  color: const Color.fromARGB(255, 5, 0, 0),
-                  fontSize: 16,
-                ),
+            SizedBox(height: 20.h),
+            Padding(
+              padding: EdgeInsets.symmetric(horizontal: 20.h),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  moneyChallange(),
+                  SizedBox(height: 24.h),
+                  DailyTaskCard(
+                    dayNumber: 2,
+                    title: 'Track all your spending today',
+                    description: 'Write down every expense, no matter how small',
+                    xpReward: 25,
+                    onCompleted: () {
+                      Get.snackbar(
+                        'Task Completed',
+                        'Great! You earned 25 XP',
+                        snackPosition: SnackPosition.BOTTOM,
+                        backgroundColor: Color(0xFF00D9FF).withOpacity(0.8),
+                        colorText: Colors.white,
+                        duration: Duration(seconds: 2),
+                      );
+                    },
+                  ),
+                ],
               ),
             ),
           ],
