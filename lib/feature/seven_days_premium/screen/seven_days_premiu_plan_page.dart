@@ -88,18 +88,10 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                   DailyTaskCard(
                     dayNumber: 2,
                     title: 'Track all your spending today',
-                    description: 'Write down every expense, no matter how small',
+                    description:
+                        'Write down every expense, no matter how small',
                     xpReward: 25,
-                    onCompleted: () {
-                      Get.snackbar(
-                        'Task Completed',
-                        'Great! You earned 25 XP',
-                        snackPosition: SnackPosition.BOTTOM,
-                        backgroundColor: Color(0xFF00D9FF).withOpacity(0.8),
-                        colorText: Colors.white,
-                        duration: Duration(seconds: 2),
-                      );
-                    },
+                    onCompleted: () {},
                   ),
                 ],
               ),

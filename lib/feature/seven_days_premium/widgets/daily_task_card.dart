@@ -1,10 +1,10 @@
+import 'package:deanash_28/core/common/constants/icons_path.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
 import '../../../core/common/constants/app_colors.dart';
 import '../../../core/common/style/global_text_style.dart';
-import '../controller/daily_task_controller.dart';
 
 class DailyTaskCard extends StatelessWidget {
   final int dayNumber;
@@ -24,32 +24,36 @@ class DailyTaskCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final DailyTaskController controller = Get.put(
-      DailyTaskController(),
-      tag: 'day_$dayNumber',
-    );
+    // final DailyTaskController controller = Get.put(
+    //   DailyTaskController(),
+    //   tag: 'day_$dayNumber',
+    // );
 
     return Obx(
       () => Container(
         padding: EdgeInsets.all(14.w),
         decoration: BoxDecoration(
-          color: AppColors.secondaryTextColor.withValues(alpha: 0.06),
+          color: AppColors.primaryTextColor,
           borderRadius: BorderRadius.circular(20.r),
-
+          boxShadow: [
+            BoxShadow(
+              color: Color(0xFF000000).withValues(alpha: .10),
+              offset: Offset(0, 4.h),
+              blurRadius: 20.r,
+            ),
+          ],
         ),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Day badge and Title with Today badge
             Row(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                // Day badge
                 Container(
-                  width: 60.w,
-                  height: 60.h,
+                  width: 55.w,
+                  height: 55.h,
                   decoration: BoxDecoration(
-                    color: Color(0xFF1E1B4B),
+                    color: AppColors.secondaryTextColor,
                     borderRadius: BorderRadius.circular(16.r),
                   ),
                   child: Column(
@@ -58,24 +62,23 @@ class DailyTaskCard extends StatelessWidget {
                       Text(
                         '$dayNumber',
                         style: getTextStyle(
-                          fontsize: sp(24),
-                          fontweight: FontWeight.w700,
+                          fontsize: sp(14),
+                          fontweight: FontWeight.w600,
                           color: Colors.white,
                         ),
                       ),
                       Text(
                         'Day',
                         style: getTextStyle(
-                          fontsize: sp(12),
-                          fontweight: FontWeight.w400,
-                          color: Colors.white.withOpacity(0.7),
+                          fontsize: sp(10),
+                          fontweight: FontWeight.w300,
+                          color: AppColors.primaryTextColor,
                         ),
                       ),
                     ],
                   ),
                 ),
                 SizedBox(width: 16.w),
-                // Title and Today badge
                 Expanded(
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
@@ -87,8 +90,8 @@ class DailyTaskCard extends StatelessWidget {
                             child: Text(
                               title,
                               style: getTextStyle(
-                                fontsize: sp(20),
-                                fontweight: FontWeight.w700,
+                                fontsize: sp(14),
+                                fontweight: FontWeight.w600,
                                 color: AppColors.secondaryTextColor,
                               ),
                             ),
@@ -96,27 +99,26 @@ class DailyTaskCard extends StatelessWidget {
                           SizedBox(width: 8.w),
                           Container(
                             padding: EdgeInsets.symmetric(
-                              horizontal: 12.w,
-                              vertical: 6.h,
+                              horizontal: 8.w,
+                              vertical: 8.h,
                             ),
                             decoration: BoxDecoration(
-                              color: Color(0xFFE9D5FF),
-                              borderRadius: BorderRadius.circular(12.r),
+                              color: Color(0xFFF5F0FF),
+                              borderRadius: BorderRadius.circular(50.r),
                             ),
                             child: Row(
-                              mainAxisSize: MainAxisSize.min,
                               children: [
                                 Icon(
                                   Icons.local_fire_department,
                                   color: Color(0xFFA855F7),
-                                  size: 14.sp,
+                                  size: sp(14),
                                 ),
                                 SizedBox(width: 4.w),
                                 Text(
                                   'Today',
                                   style: getTextStyle(
                                     fontsize: sp(12),
-                                    fontweight: FontWeight.w600,
+                                    fontweight: FontWeight.w400,
                                     color: Color(0xFFA855F7),
                                   ),
                                 ),
@@ -130,90 +132,67 @@ class DailyTaskCard extends StatelessWidget {
                 ),
               ],
             ),
-            SizedBox(height: 16.h),
-            // Description
+            SizedBox(height: 8.h),
             Text(
               description,
               style: getTextStyle(
-                fontsize: sp(14),
-                fontweight: FontWeight.w400,
-                color: AppColors.secondaryTextColor.withOpacity(0.7),
+                fontsize: sp(12),
+                fontweight: FontWeight.w300,
+                color: Color(0xFF575757),
               ),
             ),
-            SizedBox(height: 16.h),
-            // XP Badge
+            SizedBox(height: 10.h),
             Container(
-              padding: EdgeInsets.symmetric(
-                horizontal: 16.w,
-                vertical: 10.h,
-              ),
+              padding: EdgeInsets.symmetric(horizontal: 12.w, vertical: 5.h),
               decoration: BoxDecoration(
-                color: Color(0xFFE9D5FF),
-                borderRadius: BorderRadius.circular(20.r),
+                color: Color(0xFF7C3AED).withValues(alpha: .12),
+                borderRadius: BorderRadius.circular(50.r),
               ),
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Icon(
-                    Icons.flash_on,
-                    color: Color(0xFFA855F7),
-                    size: 16.sp,
+                  Image.asset(
+                    Iconpath.earnXpIcon,
+                    height: 14.h,
+                    width: 14.w,
+                    color: Color(0xFF7C3AED),
                   ),
-                  SizedBox(width: 6.w),
+                  SizedBox(width: 3.w),
                   Text(
                     '+$xpReward XP',
                     style: getTextStyle(
-                      fontsize: sp(14),
-                      fontweight: FontWeight.w600,
-                      color: Color(0xFFA855F7),
+                      fontsize: sp(10),
+                      fontweight: FontWeight.w400,
+                      color: Color(0xFF7C3AED),
                     ),
                   ),
                 ],
               ),
             ),
             SizedBox(height: 16.h),
-            // Complete Task Button
             SizedBox(
               width: double.infinity,
               child: Container(
-                padding: EdgeInsets.symmetric(vertical: 14.h),
+                padding: EdgeInsets.symmetric(vertical: 8.h),
                 decoration: BoxDecoration(
                   gradient: LinearGradient(
-                    colors: [
-                      Color(0xFF00D9FF),
-                      Color(0xFF0EA5E9),
-                      Color(0xFF7C3AED),
-                    ],
+                    colors: [Color(0xFF00FF88), Color(0xFF8935FF)],
                     begin: Alignment.centerLeft,
                     end: Alignment.centerRight,
                   ),
-                  borderRadius: BorderRadius.circular(28.r),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Color(0xFF7C3AED).withOpacity(0.3),
-                      offset: Offset(0, 4.h),
-                      blurRadius: 12.r,
-                    ),
-                  ],
+                  borderRadius: BorderRadius.circular(50.r),
                 ),
                 child: Material(
                   color: Colors.transparent,
                   child: InkWell(
-                    onTap: controller.isCompleted.value
-                        ? null
-                        : () {
-                            controller.completeTask();
-                            onCompleted?.call();
-                          },
-                    borderRadius: BorderRadius.circular(28.r),
+                    onTap: () {},
+                    borderRadius: BorderRadius.circular(50.r),
                     child: Center(
                       child: Text(
-                        controller.isCompleted.value
-                            ? 'Task Completed ✓'
-                            : 'Complete Task',
+                        'Complete Task',
                         style: getTextStyle(
-                          fontsize: sp(16),
-                          fontweight: FontWeight.w700,
+                          fontsize: sp(14),
+                          fontweight: FontWeight.w600,
                           color: Colors.white,
                         ),
                       ),
