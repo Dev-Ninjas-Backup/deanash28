@@ -22,10 +22,8 @@ class HomePage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            PreferredSize(
-              preferredSize: Size.fromHeight(80.h),
-              child: CustomAppBar(),
-            ),
+
+            CustomAppBarHome(),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
               child: Column(
@@ -44,7 +42,6 @@ class HomePage extends StatelessWidget {
                   buildLogHistory(controller),
                   SizedBox(height: 20.h),
                   PremiumCard(controller: controller),
-                  SizedBox(height: 50.h),
                 ],
               ),
             ),
