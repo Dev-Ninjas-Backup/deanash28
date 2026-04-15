@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 
 import '../../../../core/common/constants/icons_path.dart';
 import '../../../../core/common/widgets/custom_app_bar2.dart';
+import '../controller/seven_days_plan_controller.dart';
 import '../widgets/money_challange.dart';
 import '../widgets/daily_task_card.dart';
 import '../widgets/overall_progress_card.dart';
@@ -16,6 +17,8 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(SevenDaysPlanController());
+
     return Scaffold(
       backgroundColor: AppColors.primaryTextColor,
 
@@ -91,13 +94,16 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
 
                   SizedBox(height: 13.h),
 
-                  PremiumTaskCard(
-                    isActivePremiumTask: true,
-                    title: 'Review last month\'s expenses',
-                    description: 'Identify your top 3 spending categories',
-                    xpReward: 25,
-                  ),
-
+                  // Obx(
+                  //   () => PremiumTaskCard(
+                  //     isActivePremiumTask: controller.premiumTasks.isNotEmpty
+                  //         ? controller.premiumTasks[0].isActive.value
+                  //         : false,
+                  //     title: 'Review last month\'s expenses',
+                  //     description: 'Identify your top 3 spending categories',
+                  //     xpReward: 25,
+                  //   ),
+                  // ),
                   SizedBox(height: 24.h),
                   DailyTaskCard(
                     dayNumber: 2,
@@ -109,26 +115,31 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                   ),
                   SizedBox(height: 13.h),
 
-                  ListView.builder(
-                    itemCount: 10,
-                    itemBuilder: (context, index) {
-                      return Padding(
-                        padding: EdgeInsets.only(bottom: 13.h),
-                        child: PremiumTaskCard(
-                          isActivePremiumTask: false,
-                          title: 'Review last month\'s expenses',
-                          description:
-                              'Identify your top 3 spending categories',
-                          xpReward: 25,
-                          backgroundColor: Color(
-                            0xFF00FF88,
-                          ).withValues(alpha: .10),
-                        ),
-                      );
-                    },
-                    shrinkWrap: true,
-                    padding: EdgeInsets.zero,
-                    physics: NeverScrollableScrollPhysics(),
+                  Obx(
+                    () => ListView.builder(
+                      itemCount: controller.premiumTasks.length,
+                      itemBuilder: (context, index) {
+                        final task = controller.premiumTasks[index];
+                        return Padding(
+                          padding: EdgeInsets.only(bottom: 13.h),
+                          child: Obx(
+                            () => PremiumTaskCard(
+                              onTap: () {},
+                              isActivePremiumTask: task.isActive.value,
+                              title: task.title,
+                              description: task.description,
+                              xpReward: task.xpReward,
+                              backgroundColor: task.isActive.value
+                                  ? null
+                                  : Color(0xFF00FF88).withValues(alpha: .10),
+                            ),
+                          ),
+                        );
+                      },
+                      shrinkWrap: true,
+                      padding: EdgeInsets.zero,
+                      physics: NeverScrollableScrollPhysics(),
+                    ),
                   ),
                 ],
               ),
