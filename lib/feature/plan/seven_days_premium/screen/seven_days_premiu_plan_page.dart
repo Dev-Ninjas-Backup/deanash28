@@ -9,6 +9,7 @@ import '../../../../core/common/widgets/custom_app_bar2.dart';
 import '../widgets/money_challange.dart';
 import '../widgets/daily_task_card.dart';
 import '../widgets/overall_progress_card.dart';
+import '../widgets/premium_task_card.dart';
 
 class SevenDaysPremiuPlanPage extends StatelessWidget {
   const SevenDaysPremiuPlanPage({super.key});
@@ -87,6 +88,16 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                   moneyChallange(),
                   SizedBox(height: 13.h),
                   OverallProgressCard(),
+
+                  SizedBox(height: 13.h),
+
+                  PremiumTaskCard(
+                    isActivePremiumTask: true,
+                    title: 'Review last month\'s expenses',
+                    description: 'Identify your top 3 spending categories',
+                    xpReward: 25,
+                  ),
+
                   SizedBox(height: 24.h),
                   DailyTaskCard(
                     dayNumber: 2,
@@ -97,6 +108,28 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                     onCompleted: () {},
                   ),
                   SizedBox(height: 13.h),
+
+                  ListView.builder(
+                    itemCount: 10,
+                    itemBuilder: (context, index) {
+                      return Padding(
+                        padding: EdgeInsets.only(bottom: 13.h),
+                        child: PremiumTaskCard(
+                          isActivePremiumTask: false,
+                          title: 'Review last month\'s expenses',
+                          description:
+                              'Identify your top 3 spending categories',
+                          xpReward: 25,
+                          backgroundColor: Color(
+                            0xFF00FF88,
+                          ).withValues(alpha: .10),
+                        ),
+                      );
+                    },
+                    shrinkWrap: true,
+                    padding: EdgeInsets.zero,
+                    physics: NeverScrollableScrollPhysics(),
+                  ),
                 ],
               ),
             ),

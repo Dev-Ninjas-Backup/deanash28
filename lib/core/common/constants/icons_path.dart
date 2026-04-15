@@ -46,6 +46,8 @@ class Iconpath {
   static String xpEarnIcon="assets/icons/xp_earn.png";
   static String dayLeftIcon="assets/icons/day_left.png";
   static String completedIcon="assets/icons/complete.png";
+  static String reviewLastMonthIcon="assets/icons/review_last_month_exoress.png";
+  static String taskIcinLockedIcon="assets/icons/taskIconLock.png";
 
 
 }
