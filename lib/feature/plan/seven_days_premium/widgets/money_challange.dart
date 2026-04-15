@@ -1,9 +1,9 @@
   import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
-import '../../../core/common/constants/app_colors.dart';
-import '../../../core/common/constants/icons_path.dart';
-import '../../../core/common/style/global_text_style.dart';
+import '../../../../core/common/constants/app_colors.dart';
+import '../../../../core/common/constants/icons_path.dart';
+import '../../../../core/common/style/global_text_style.dart';
 
 Widget moneyChallange() {
     return Column(

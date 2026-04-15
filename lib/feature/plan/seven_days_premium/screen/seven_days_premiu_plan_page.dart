@@ -4,8 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:get/get.dart';
 
-import '../../../core/common/constants/icons_path.dart';
-import '../../../core/common/widgets/custom_app_bar2.dart';
+import '../../../../core/common/constants/icons_path.dart';
+import '../../../../core/common/widgets/custom_app_bar2.dart';
 import '../widgets/money_challange.dart';
 import '../widgets/daily_task_card.dart';
 
