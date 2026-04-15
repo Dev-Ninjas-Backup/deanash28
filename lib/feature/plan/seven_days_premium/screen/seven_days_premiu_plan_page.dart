@@ -8,6 +8,7 @@ import '../../../../core/common/constants/icons_path.dart';
 import '../../../../core/common/widgets/custom_app_bar2.dart';
 import '../widgets/money_challange.dart';
 import '../widgets/daily_task_card.dart';
+import '../widgets/overall_progress_card.dart';
 
 class SevenDaysPremiuPlanPage extends StatelessWidget {
   const SevenDaysPremiuPlanPage({super.key});
@@ -84,6 +85,8 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   moneyChallange(),
+                  SizedBox(height: 13.h),
+                  OverallProgressCard(),
                   SizedBox(height: 24.h),
                   DailyTaskCard(
                     dayNumber: 2,
@@ -93,6 +96,7 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                     xpReward: 25,
                     onCompleted: () {},
                   ),
+                  SizedBox(height: 13.h),
                 ],
               ),
             ),
