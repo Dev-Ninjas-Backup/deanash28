@@ -4,6 +4,7 @@ class SevenDaysPlanController extends GetxController {
   final Rx<double> totalXP = 265.0.obs;
   final Rx<double> earnedXP = 25.0.obs;
   final RxList<PremiumTask> premiumTasks = <PremiumTask>[].obs;
+  final selectedBillingCycle = Rx<String?>('monthly');
 
   double get progressPercentage => (earnedXP.value / totalXP.value) * 100;
   double get remainingXP => totalXP.value - earnedXP.value;

@@ -6,6 +6,7 @@ import 'package:get/get.dart';
 import '../../../core/common/constants/app_colors.dart';
 import '../../../core/common/constants/icons_path.dart';
 import '../../../core/common/style/global_text_style.dart';
+import '../../../core/common/widgets/custom_build_pricing.dart';
 import '../../../core/common/widgets/custom_button.dart';
 import '../controller/onboarding_controller.dart';
 
@@ -30,6 +31,7 @@ class Step4PremiumContent extends StatelessWidget {
         children: [
           buildFeaturesTable(),
           SizedBox(height: 32.h),
+
           Container(
             clipBehavior: Clip.none,
             padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 16.h),
@@ -55,7 +57,7 @@ class Step4PremiumContent extends StatelessWidget {
 
                 // Monthly pricing option
                 Obx(
-                  () => _buildPricingOption(
+                  () => buildPricingOption(
                     emoji: Iconpath.monthlyIcon,
                     title: 'Monthly',
                     price: '\$4.99',
@@ -68,7 +70,7 @@ class Step4PremiumContent extends StatelessWidget {
 
                 // Annual pricing option
                 Obx(
-                  () => _buildPricingOption(
+                  () => buildPricingOption(
                     emoji: Iconpath.annuallyIcon,
                     title: 'Annually',
                     price: '\$39.99',
@@ -155,7 +157,7 @@ class Step4PremiumContent extends StatelessWidget {
               Future.delayed(Duration(seconds: 1), () {
                 EasyLoading.dismiss();
                 Get.offAll(MainShell());
-               // Get.offAllNamed(AppRoute.getHomeScreen());
+                // Get.offAllNamed(AppRoute.getHomeScreen());
               });
             },
           ),
@@ -361,92 +363,6 @@ class Step4PremiumContent extends StatelessWidget {
           );
         }),
       ],
-    );
-  }
-
-  Widget _buildPricingOption({
-    required String emoji,
-    required String title,
-    required String price,
-    String? badge,
-    required bool isSelected,
-    required VoidCallback onTap,
-  }) {
-    return GestureDetector(
-      onTap: onTap,
-      child: Container(
-        padding: EdgeInsets.symmetric(horizontal: 16.w, vertical: 12.h),
-        decoration: BoxDecoration(
-          color: isSelected
-              ? AppColors.primaryTextColor
-              : AppColors.primaryTextColor.withValues(alpha: 0.05),
-          borderRadius: BorderRadius.circular(12.r),
-          border: Border.all(
-            color: isSelected
-                ? AppColors.primaryTextColor
-                : AppColors.primaryTextColor.withValues(alpha: 0.08),
-            width: 1.5,
-          ),
-        ),
-        child: Stack(
-          clipBehavior: Clip.none,
-          children: [
-            Row(
-              children: [
-                Image.asset(emoji, width: 40.w, height: 40.h),
-                SizedBox(width: 12.w),
-                Expanded(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        title,
-                        style: getTextStyle(
-                          fontsize: sp(14),
-                          fontweight: FontWeight.w600,
-                          color: isSelected
-                              ? AppColors.secondaryTextColor
-                              : AppColors.primaryTextColor,
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                Text(
-                  price,
-                  style: getTextStyle(
-                    fontsize: sp(14),
-                    fontweight: FontWeight.w700,
-                    color: isSelected
-                        ? AppColors.secondaryTextColor
-                        : AppColors.primaryTextColor,
-                  ),
-                ),
-              ],
-            ),
-            if (badge != null)
-              Positioned(
-                top: -25.h,
-                right: 30.w,
-                child: Container(
-                  padding: EdgeInsets.symmetric(horizontal: 8.w, vertical: 5.h),
-                  decoration: BoxDecoration(
-                    color: Color(0xFF244BE9),
-                    borderRadius: BorderRadius.circular(15.r),
-                  ),
-                  child: Text(
-                    badge,
-                    style: getTextStyle(
-                      fontsize: sp(10),
-                      fontweight: FontWeight.w600,
-                      color: AppColors.primaryTextColor,
-                    ),
-                  ),
-                ),
-              ),
-          ],
-        ),
-      ),
     );
   }
 }

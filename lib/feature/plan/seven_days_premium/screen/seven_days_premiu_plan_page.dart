@@ -11,6 +11,7 @@ import '../widgets/money_challange.dart';
 import '../widgets/daily_task_card.dart';
 import '../widgets/overall_progress_card.dart';
 import '../widgets/premium_task_card.dart';
+import '../widgets/upgrade_to_premium.dart';
 
 class SevenDaysPremiuPlanPage extends StatelessWidget {
   const SevenDaysPremiuPlanPage({super.key});
@@ -104,7 +105,6 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                   //     xpReward: 25,
                   //   ),
                   // ),
-                  SizedBox(height: 24.h),
                   DailyTaskCard(
                     dayNumber: 2,
                     title: 'Track all your spending today',
@@ -115,11 +115,23 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                   ),
                   SizedBox(height: 13.h),
 
-                  Obx(
-                    () => ListView.builder(
-                      itemCount: controller.premiumTasks.length,
+                  Obx(() {
+                    final taskCount = controller.premiumTasks.length;
+                    final totalItems = taskCount + 1;
+
+                    return ListView.builder(
+                      itemCount: totalItems,
                       itemBuilder: (context, index) {
-                        final task = controller.premiumTasks[index];
+                        if (index == 3) {
+                          return Padding(
+                            padding: EdgeInsets.only(bottom: 13.h),
+                            child: UpgradeToPremium(controller: controller),
+                          );
+                        }
+
+                        final taskIndex = index > 3 ? index - 1 : index;
+                        final task = controller.premiumTasks[taskIndex];
+
                         return Padding(
                           padding: EdgeInsets.only(bottom: 13.h),
                           child: Obx(
@@ -139,8 +151,9 @@ class SevenDaysPremiuPlanPage extends StatelessWidget {
                       shrinkWrap: true,
                       padding: EdgeInsets.zero,
                       physics: NeverScrollableScrollPhysics(),
-                    ),
-                  ),
+                    );
+                  }),
+                  SizedBox(height: 25.h),
                 ],
               ),
             ),
