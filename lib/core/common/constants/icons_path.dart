@@ -48,6 +48,7 @@ class Iconpath {
   static String completedIcon="assets/icons/complete.png";
   static String reviewLastMonthIcon="assets/icons/review_last_month_exoress.png";
   static String taskIcinLockedIcon="assets/icons/taskIconLock.png";
+  static String congratulationsIcon="assets/icons/congratulation_icon.png";
 
 
 }
